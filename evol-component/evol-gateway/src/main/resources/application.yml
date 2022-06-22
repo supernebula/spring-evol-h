@@ -1,0 +1,74 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: coach-gateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+#  redisson:
+#    host: true
+#    master-name: false
+#    cluster:
+#      nodes: false
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: url-proxy-1
+          uri: https://blog.csdn.net
+          predicates:
+            - Path=/csdn
+        - id: coach-auth-server
+          uri: lb://coach-auth-server
+          predicates:
+            - Path=/api-auth/**
+          filters:
+            - StripPrefix=1
+
+        - id: coach-business-server
+          uri: lb://coach-business-server
+          predicates:
+            - Path=/api-business/**
+          filters:
+              - StripPrefix=1
+        - id: coach-order-server
+          uri: lb://coach-order-server
+          predicates:
+            - Path=/api-order/**
+          filters:
+            - StripPrefix=1
+        - id: coach-user-server
+          uri: lb://coach-user-server
+          predicates:
+            - Path=/api-user/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1500000
+                redis-rate-limiter.burstCapacity: 2000000
+            #- TokenDecoderFilter
+            - StripPrefix=1
+
+# nocos 和 eureka 二选一
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://admin:admin@127.0.0.1:8761/eureka/
+#    enabled: true
+#    register-with-eureka: true
+#    fetch-registry: true
+
+
+

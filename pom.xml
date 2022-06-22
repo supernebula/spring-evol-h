@@ -35,6 +35,7 @@
         <mybatisPlus.version>3.0.6</mybatisPlus.version>
         <elasticsearch.version>7.6.2</elasticsearch.version>
         <shenyu-gateway.version>2.4.3</shenyu-gateway.version>
+        <mybatisPlus.version>3.0.6</mybatisPlus.version>
         <nacos.version> </nacos.version>
     </properties>
 
@@ -172,7 +173,7 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-config -->
+
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
@@ -222,24 +223,13 @@
     </dependencyManagement>
 
     <modules>
-<!--        <module>coach-base-client</module>-->
-<!--        <module>coach-gateway</module>-->
-<!--        <module>coach-soul-gateway</module>-->
-<!--        <module>coach-monitor</module>-->
-<!--        <module>coach-register</module>-->
-<!--        <module>coach-server</module>-->
-<!--        <module>coach-common</module>-->
-<!--        <module>test</module>-->
-<!--        <module>coach-shenyu-gateway</module>-->
-<!--        <module>coach-web/coach-web-oauth-example</module>-->
+
         <module>evol-common</module>
-        <module>evol-common</module>
-        <module>evol-component</module>
-        <module>evolcomponent/evol-gateway</module>
+        <module>evol-component/evol-gateway</module>
         <module>evol-component/evol-monitor</module>
         <module>evol-component/evol-register</module>
         <module>evol-component/evol-shenyu-gateway</module>
-        <module>evol-component/evol-server</module>
+        <module>evol-server</module>
         <module>evol-server</module>
         <module>evol-web/coach-web-client</module>
         <module>evol-web/coach-web-manage</module>
