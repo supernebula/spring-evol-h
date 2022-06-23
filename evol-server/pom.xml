@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>evol-server</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>evol-auth-server</module>
         <module>evol-business-server</module>
@@ -21,6 +21,4 @@
         <module>evol-mock-server</module>
         <module>evol-pay-server</module>
     </modules>
-
-
 </project>

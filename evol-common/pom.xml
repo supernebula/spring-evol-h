@@ -8,8 +8,18 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>evol-common</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>evol-common-core</module>
+        <module>evol-common-data</module>
+        <module>evol-common-datasource</module>
+        <module>evol-common-es</module>
+        <module>evol-common-protobuf</module>
+        <module>evol-common-redis</module>
+        <module>evol-common-util</module>
+    </modules>
 
     <dependencies>
         <dependency>

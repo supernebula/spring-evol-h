@@ -8,8 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <name>evol-common-data</name>
     <artifactId>evol-common-data</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- 增加jdbc的支持 -->
@@ -46,7 +47,10 @@
             <artifactId>mybatis-plus-core</artifactId>
             <version>${mybatisPlus.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
 
     </dependencies>

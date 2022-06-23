@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>spring-evol</name>
     <description>基于spring-cloud H.SR12版本</description>
-
+    <packaging>pom</packaging>
 
     <properties>
         <evol.version>0.1-SNAPSHOT</evol.version>
@@ -38,6 +38,17 @@
         <mybatisPlus.version>3.0.6</mybatisPlus.version>
         <nacos.version> </nacos.version>
     </properties>
+
+    <modules>
+        <module>evol-common</module>
+        <module>evol-component/evol-gateway</module>
+        <module>evol-component/evol-monitor</module>
+        <module>evol-component/evol-register</module>
+        <module>evol-component/evol-shenyu-gateway</module>
+        <module>evol-server</module>
+        <module>evol-server</module>
+    </modules>
+
 
     <!-- 依赖声明 -->
     <dependencyManagement>
@@ -216,27 +227,8 @@
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>2.2.2</version>
             </dependency>
-
-
-
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-
-        <module>evol-common</module>
-        <module>evol-component/evol-gateway</module>
-        <module>evol-component/evol-monitor</module>
-        <module>evol-component/evol-register</module>
-        <module>evol-component/evol-shenyu-gateway</module>
-        <module>evol-server</module>
-        <module>evol-server</module>
-        <module>evol-web/coach-web-client</module>
-        <module>evol-web/coach-web-manage</module>
-    </modules>
-    <packaging>pom</packaging>
-
-
     <dependencies>
 
         <!--        eureka 和 nacos 注册中心二选 开始一-->
