@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="shared/layout">
+
+<head>
+    <title>M Management</title>
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" th:href="@{/bootstrap/dist/css/bootstrap.css}" />
+    <script th:src="@{/jquery/jquery.js}"></script>
+    <script th:src="@{/site/func.js}"></script>
+
+    <style>
+        .content #item-list { width: 100%; height: 100px; }
+        .movie-item {  height: 100px; }
+        .movie-item .movie-img { height:100px;  width: 20%; min-width: 100px; }
+        .movie-item .movie-img img { height:100px;  width: 100px; }
+        .movie-item .name { height: 20px; }
+        .movie-item .foreign_name{ height: 20px; }
+        .movie-item .minutes { height: 20px; }
+        .movie-item .space_type { height: 20px; }
+        #pay-link {height: 20px; width: 100px; background-color: #e0e0e0;}
+    </style>
+
+</head>
+<body>
+<!-- Content Wrapper. Contains page content -->
+<div layout:fragment="content" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Movie</a></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
+        <div id="movie-detail" class="col-lg-12 col-xs-12 row movie-item">
+            <div class="col-lg-4 col-xs-4 movie-img">
+                <img id="movie-img" src="" alt="" />
+            </div>
+            <div class="col-lg-8 col-xs-8 name"> </div>
+            <div class="col-lg-8 col-xs-8 foreign_name"> </div>
+            <div class="col-lg-8 col-xs-8 release_date"></div>
+            <div class="col-lg-8 col-xs-8 minutes"> </div>
+            <div class="col-lg-8 col-xs-8 space_type"> </div>
+        </div>
+
+        <div  class="col-lg-12 col-xs-12 row movie-item">
+            <button style="position: relative; width: 70px; height: 30px; line-height: 30px; text-align:
+            center;"  onclick="placeOrder()" >下单</button>
+        </div>
+
+        <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<th:block layout:fragment="scriptsblock">
+    <script>
+
+        var movieId = getQueryString("movieId");
+
+
+        //下单
+        function placeOrder() {
+
+            //查商品
+            //var apiUrl = "http://localhost:8088/client/movie/get?movieId=" + movieId;
+            var apiUrl = config.businessBaseUrl + "/client/movie/get?movieId=" + movieId;
+            $.getJSON( apiUrl, function( resp ) {
+                console.log(resp);
+                movieItem = resp.data;
+
+                //var buyUrl = "http://localhost:8084/client/netOrder/buy?userId=1&movieId=" + movieId;
+                var buyUrl = config.orderBaseUrl + "/client/netOrder/buy?userId=1&movieId=" + movieId;
+                $.post(buyUrl, { movieId: movieId, userId: $("#userId").val()},
+                    function(resp){
+                        if(resp.code != 0 || resp.subCode != 0){
+                            console.log(resp.code);
+                            console.log(resp.msg);
+                            console.log(resp.subCode);
+
+                        }
+
+                        var orderResult = resp.data;
+
+                        orderId = orderResult.orderId;
+                        userId = orderResult.userId;
+
+                        var payUrl = "/order/pay?orderId=" + orderId + "&userId=" + userId;
+                        window.location.href = payUrl;
+                    });
+            });
+            return false;
+
+        }
+
+        // var item = {id:1, name:"name11", foreignName : "fore name11", releaseDate: "2021-01-20", minutes :
+        //         "120分钟", spaceType : "二维",
+        //     images :
+        //         "http://img.bj.wezhan.cn/content/sitefiles/2077061/images/12860219_qrcode_for_gh_48a5c13a8ebb_258.jpeg"};
+
+
+
+        $(document).ready(function() {
+
+            //var apiUrl = "http://localhost:8088/client/movie/get?movieId=" + movieId;
+            var apiUrl = config.businessBaseUrl + "/client/movie/get?movieId=" + movieId;
+            var payUrl = "/order/pay?movieId=" + movieId;
+            $("#pay-link").attr("href", payUrl);
+            $.getJSON( apiUrl, function( resp ) {
+                console.log(resp);
+                show(resp.data);
+            });
+
+        });
+
+        //note
+        function show(item) {
+            $("#movie-img").attr("src", item.coverUri);
+            $("#movie-img").attr("alt", item.name);
+            $("#movie-detail .name").text("中文名称：" + item.name);
+            $("#movie-detail .foreign_name").text("英文名称:" + item.foreignName);
+            $("#movie-detail .release_date").text("上映时间：" + item.releaseDate);
+            $("#movie-detail .minutes").text("时长：" + item.minutes);
+            $("#movie-detail .space_type").text(item.spaceType + "维");
+        }
+
+    </script>
+</th:block>
+</body>
+</html>

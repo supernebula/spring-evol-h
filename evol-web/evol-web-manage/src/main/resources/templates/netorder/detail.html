@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="shared/layout">
+
+<head>
+    <title>Yelp Role Management</title>
+    <link rel="stylesheet" th:href="@{/kendoui/css/kendo.common-material.min.css}" />
+    <link rel="stylesheet" th:href="@{/kendoui/css/kendo.material.min.css}" />
+    <link rel="stylesheet" th:href="@{/kendoui/css/kendo.material.mobile.min.css}" />
+</head>
+<body>
+<!-- Content Wrapper. Contains page content -->
+<div layout:fragment="content" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Net Order Detail
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Net Order</a></li>
+            <li class="active">detail</li>
+            <li><a class="btn btn-default" th:href="@{/netOrder/index}" role="button">返回</a></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div id="item-detail">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">orderNo</label>
+                            <div class="col-sm-10">
+                                <span id="orderNo"  class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">username</label>
+                            <div class="col-sm-10">
+                                <span id="username"  class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">movieName</label>
+                            <div class="col-sm-10">
+                                <span id="movieName" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">paidAmount</label>
+                            <div class="col-sm-10">
+                                <span id="paidAmount" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">amount</label>
+                            <div class="col-sm-10">
+                                <span id="amount" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">status</label>
+                            <div class="col-sm-10">
+                                <span id="status" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">payOrderNo</label>
+                            <div class="col-sm-10">
+                                <span id="payOrderNo" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">payTime</label>
+                            <div class="col-sm-10">
+                                <span id="payTime" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">refundOrderNo</label>
+                            <div class="col-sm-10">
+                                <span id="refundOrderNo" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">refundTime</label>
+                            <div class="col-sm-10">
+                                <span id="refundTime" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">payModeType</label>
+                            <div class="col-sm-10">
+                                <span id="payModeType" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">createTime</label>
+                            <div class="col-sm-10">
+                                <span id="createTime" class="checkbox"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">updateTime</label>
+                            <div class="col-sm-10">
+                                <span id="udpateTime" class="checkbox"></span>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<th:block layout:fragment="scriptsblock">
+    <script th:src="@{/site/func.js}"></script>
+    <script th:inline="javascript">
+
+        var orderId = getQueryString("orderId");
+        var apiUrl = config.orderBaseUrl + "/web/netOrder/get?orderId=" + orderId;
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: apiUrl,
+                headers: { "Authorization" :  window.sessionStorage.getItem("token")},
+                dataType: "json",
+                success: function(response){
+                    if(!response.success)
+                    {
+                        $("#item-detail #name").html(response.message);
+                    }
+
+                    var item = response.data;
+                    $("#item-detail #orderNo").html(item.orderNo);
+                    $("#item-detail #username").html(item.username);
+                    $("#item-detail #movieName").html(item.movieName);
+                    $("#item-detail #paidAmount").html(item.paidAmount);
+                    $("#item-detail #amount").html(item.amount);
+                    $("#item-detail #status").html(item.status);
+                    $("#item-detail #payOrderNo").html(item.payOrderNo);
+                    $("#item-detail #payTime").html(item.payTime);
+                    $("#item-detail #refundOrderNo").html(item.refundOrderNo);
+                    $("#item-detail #refundTime").html(item.refundTime);
+                    $("#item-detail #payModeType").html(item.payModeType);
+                    $("#item-detail #createTime").html(item.createTime);
+                    $("#item-detail #udpateTime").html(item.udpateTime);
+                },
+                error  : function (response) {
+                    handResponseStatus(response);
+                }
+            });
+
+
+        });
+    </script>
+</th:block>
+</body>
+</html>
