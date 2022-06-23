@@ -12,10 +12,6 @@
     <artifactId>evol-server</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>coach-auth-server</module>
-        <module>coach-business-server</module>
-        <module>coach-order-server</module>
-        <module>coach-user-server</module>
         <module>evol-auth-server</module>
         <module>evol-business-server</module>
         <module>evol-order-server</module>
@@ -23,6 +19,7 @@
         <module>evol-server-common</module>
         <module>evol-log-server</module>
         <module>evol-mock-server</module>
+        <module>evol-pay-server</module>
     </modules>
 
 

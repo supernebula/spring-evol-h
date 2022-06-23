@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="shared/layout">
+
+<head>
+    <title>M Management</title>
+    <script th:src="@{/jquery/jquery.js}"></script>
+
+</head>
+<body>
+
+<div id="wxAuthCodeUrl">
+
+</div>
+
+<br/>
+
+跳转微信授权...
+
+
+<th:block layout:fragment="scriptsblock">
+    <script>
+
+        function getUrlParam(name)
+        {
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r!=null) return unescape(r[2]); return null; //返回参数值
+        }
+
+
+        var authCode = getUrlParam("code");
+        var apiUrl = "http://i92c5k.natappfree.cc/WxOAuth/requestToken?code=" + authCode;
+        $(document).ready(function() {
+            $.ajax({ url: apiUrl, success: function(resp){
+
+                    var result = resp.data;
+                    console.log(result);
+                    $("#wxAuthCodeUrl").text(JSON.stringify(result));
+
+                    // if(resp.code ==0 && resp.subCode == 0){
+                    //
+                    //     //window.location.replace(wxAuthCodeUrl);
+                    // }
+                }});
+        });
+    </script>
+</th:block>
+</body>
+</html>
