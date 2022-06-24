@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "coach-business-server",fallback = FeignMovieClientFallbackImpl.class)
+@FeignClient(value = "evol-business-server",fallback = FeignMovieClientFallbackImpl.class)
 public interface FeignMovieClient {
 
     @GetMapping(value = "/inner/movie/get")

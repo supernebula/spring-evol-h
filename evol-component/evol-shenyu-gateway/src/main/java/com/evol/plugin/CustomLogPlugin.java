@@ -3,18 +3,18 @@ package com.evol.plugin;
 import com.alibaba.fastjson.JSONObject;
 import com.evol.plugin.pojo.CustomLogRuleDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.dromara.soul.common.dto.RuleData;
-import org.dromara.soul.common.dto.SelectorData;
-import org.dromara.soul.common.enums.PluginEnum;
-import org.dromara.soul.plugin.api.SoulPluginChain;
-import org.dromara.soul.plugin.base.AbstractSoulPlugin;
+import org.apache.shenyu.common.dto.RuleData;
+import org.apache.shenyu.common.dto.SelectorData;
+import org.apache.shenyu.common.enums.PluginEnum;
+import org.apache.shenyu.plugin.api.ShenyuPluginChain;
+import org.apache.shenyu.plugin.base.AbstractShenyuPlugin;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class CustomLogPlugin extends AbstractSoulPlugin {
+public class CustomLogPlugin extends AbstractShenyuPlugin {
 
 
     @Override
@@ -35,7 +35,7 @@ public class CustomLogPlugin extends AbstractSoulPlugin {
 
 
     @Override
-    protected Mono<Void> doExecute(ServerWebExchange exchange, SoulPluginChain chain, SelectorData selector, RuleData rule) {
+    protected Mono<Void> doExecute(ServerWebExchange exchange, ShenyuPluginChain chain, SelectorData selector, RuleData rule) {
 
         log.debug("--function CustomLogPlugin plugin start--");
         final String ruleHandle = rule.getHandle();

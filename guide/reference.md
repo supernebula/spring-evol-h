@@ -476,9 +476,9 @@ https://blog.csdn.net/weixin_42437164/article/details/100577715
 
 全部项目打包成功
 出现的问题：
-Could not resolve dependencies  coach-common-data for project， 搜索原因:要先打包coach-common-data bing install ,依然无效；
-后发现idea maven窗口coach-common-data(root)被认定为根项目，但按项目结构它应该是第三层项目。
-排查coach-common发现，<moudles>节点未包含<moudle>coach-common-data</moudle>,添加后解决。所有项目可以打包成功。
+Could not resolve dependencies  evol-common-data for project， 搜索原因:要先打包evol-common-data bing install ,依然无效；
+后发现idea maven窗口evol-common-data(root)被认定为根项目，但按项目结构它应该是第三层项目。
+排查evol-common发现，<moudles>节点未包含<moudle>evol-common-data</moudle>,添加后解决。所有项目可以打包成功。
 原因：多项目moudle，每层的moudles不能有遗留
 
 
@@ -493,7 +493,7 @@ https://blog.csdn.net/weixin_42195292/article/details/104271831
 2. docker-out.sh脚本
 2.1 复制每个moudle的docker目录到dockerout目录
 2.2 复制docker-compose-server.yml 到dockerout/docker-compse.yml    (context目录结构调整为centos部署结构)
-2.3 scp整个dockerout目录到服务器的/home/admin/coach-service
+2.3 scp整个dockerout目录到服务器的/home/admin/evol-service
 3 登录服务器执行docker-compose启动整个微服务项目，启动完成
 
 ### mac 安装 ftp（ftp不用） 

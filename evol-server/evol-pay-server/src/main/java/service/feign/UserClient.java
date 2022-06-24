@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient("coach-user-server")
+@FeignClient("evol-user-server")
 public interface UserClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/list")

@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   application:
-    name: coach-gateway
+    name: evol-gateway
   redis:
     host: 127.0.0.1
     port: 6379
@@ -26,27 +26,27 @@ spring:
           uri: https://blog.csdn.net
           predicates:
             - Path=/csdn
-        - id: coach-auth-server
-          uri: lb://coach-auth-server
+        - id: evol-auth-server
+          uri: lb://evol-auth-server
           predicates:
             - Path=/api-auth/**
           filters:
             - StripPrefix=1
 
-        - id: coach-business-server
-          uri: lb://coach-business-server
+        - id: evol-business-server
+          uri: lb://evol-business-server
           predicates:
             - Path=/api-business/**
           filters:
               - StripPrefix=1
-        - id: coach-order-server
-          uri: lb://coach-order-server
+        - id: evol-order-server
+          uri: lb://evol-order-server
           predicates:
             - Path=/api-order/**
           filters:
             - StripPrefix=1
-        - id: coach-user-server
-          uri: lb://coach-user-server
+        - id: evol-user-server
+          uri: lb://evol-user-server
           predicates:
             - Path=/api-user/**
           filters:

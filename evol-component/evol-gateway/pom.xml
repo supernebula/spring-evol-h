@@ -16,15 +16,16 @@
     <dependencies>
         <dependency>
             <groupId>com.evol</groupId>
-            <artifactId>coach-common-core</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <artifactId>evol-common-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.evol</groupId>
-            <artifactId>coach-common-redis</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <artifactId>evol-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

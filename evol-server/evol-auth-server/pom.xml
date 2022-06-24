@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>evol-auth-server</artifactId>
     <name>evol-auth-server</name>
+    <version>1.0-SNAPSHOT</version>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
@@ -18,21 +18,21 @@
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-common-core</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-server-common</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
 
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-common-data</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
 
@@ -141,7 +141,7 @@
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-common-util</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
@@ -164,7 +164,7 @@
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-common-redis</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 

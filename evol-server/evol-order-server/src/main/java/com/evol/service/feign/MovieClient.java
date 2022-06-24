@@ -7,7 +7,7 @@ package com.evol.service.feign;//package com.evol.service.feign;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //
-//@FeignClient("coach-business-server")
+//@FeignClient("evol-business-server")
 //public interface MovieClient {
 //
 //    @RequestMapping(method = RequestMethod.GET, value = "/inner/movie/get")

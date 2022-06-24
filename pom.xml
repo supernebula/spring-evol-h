@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <evol.version>0.1-SNAPSHOT</evol.version>
+        <evol.version>1.0-SNAPSHOT</evol.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -47,6 +47,7 @@
         <module>evol-component/evol-shenyu-gateway</module>
         <module>evol-server</module>
         <module>evol-server</module>
+        <module>evol-common/evol-common-dto</module>
     </modules>
 
 

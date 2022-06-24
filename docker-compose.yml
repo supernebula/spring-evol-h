@@ -2,78 +2,78 @@ version: '3'
 services:
   #网关
   #自定义的服务名称
-  coach-soul-gateway:
+  evol-shenyu-gateway:
     build:
-      context: coach-soul-gateway/src/docker
+      context: evol-shenyu-gateway/src/docker
       dockerfile: Dockerfile
     #镜像名称
-    image: coach-soul-gateway:v1
+    image: evol-shenyu-gateway:v1
     #容器名称
-    container_name: coach-soul-gateway
+    container_name: evol-shenyu-gateway
     #容器down掉后，会自动重启
     restart: on-failure
     #映射端口。格式为宿主机端口：容器端口
     ports:
       - "9000:9000"
     #容器启动后，执行的命令
-    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/coach-soul-gateway-1.0.jar
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/evol-shenyu-gateway-1.0.jar
     #授权服务
-  coach-auth-server:
+  evol-auth-server:
     build:
-      context: coach-server/coach-auth-server/src/docker
+      context: evol-server/evol-auth-server/src/docker
       dockerfile: Dockerfile
-    image: coach-auth-server:v1
-    container_name: coach-auth-server
+    image: evol-auth-server:v1
+    container_name: evol-auth-server
     restart: always
     ports:
       - "8090:8090"
-    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/coach-auth-server-0.1-SNAPSHOT.jar
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/evol-auth-server-1.0-SNAPSHOT.jar
     depends_on:
-      - coach-soul-gateway
+      - evol-shenyu-gateway
     links:
-      - coach-soul-gateway:coach-soul-gateway
+      - evol-shenyu-gateway:evol-shenyu-gateway
     #商户服务
-  coach-business-server:
+  evol-business-server:
     build:
-      context: coach-server/coach-business-server/src/docker
+      context: evol-server/evol-business-server/src/docker
       dockerfile: Dockerfile
-    image: coach-business-server:v1
-    container_name: coach-business-server
+    image: evol-business-server:v1
+    container_name: evol-business-server
     restart: always
     ports:
       - "8088:8088"
-    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/coach-business-server-0.1-SNAPSHOT.jar
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/evol-business-server-1.0-SNAPSHOT.jar
     depends_on:
-      - coach-soul-gateway
+      - evol-shenyu-gateway
     links:
-      - coach-soul-gateway:coach-soul-gateway
+      - evol-shenyu-gateway:evol-shenyu-gateway
     #订单服务
-  coach-order-server:
+  evol-order-server:
     build:
-      context: coach-server/coach-order-server/src/docker
+      context: evol-server/evol-order-server/src/docker
       dockerfile: Dockerfile
-    image: coach-order-server:v1
-    container_name: coach-order-server
+    image: evol-order-server:v1
+    container_name: evol-order-server
     restart: always
     ports:
       - "8084:8084"
-    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/coach-order-server-0.1-SNAPSHOT.jar
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/evol-order-server-1.0-SNAPSHOT.jar
     depends_on:
-      - coach-soul-gateway
+      - evol-shenyu-gateway
     links:
-      - coach-soul-gateway:coach-soul-gateway
+      - evol-shenyu-gateway:evol-shenyu-gateway
     #用户服务
-  coach-user-server:
+  evol-user-server:
     build:
-      context: coach-server/coach-user-server/src/docker
+      context: evol-server/evol-user-server/src/docker
       dockerfile: Dockerfile
-    image: coach-user-server:v1
-    container_name: coach-user-server
+    image: evol-user-server:v1
+    container_name: evol-user-server
     restart: always
     ports:
       - "8089:8089"
-    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/coach-user-server-0.1-SNAPSHOT.jar
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /microservice/evol-user-server-1.0-SNAPSHOT.jar
     depends_on:
-      - coach-soul-gateway
+      - evol-shenyu-gateway
     links:
-      - coach-soul-gateway:coach-soul-gateway
+      - evol-shenyu-gateway:evol-shenyu-gateway

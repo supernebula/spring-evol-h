@@ -1,5 +1,5 @@
 D:
-cd D:\source\github\spring-coach\coach-common\coach-common-protobuf\src\main\
+cd D:\source\github\spring-evol-h\evol-common\evol-common-protobuf\src\main\
 protoc --java_out=./ com\evol\protobuf\user.proto
 
 protoc --csharp_out=./ com\evol\protobuf\user.proto
@@ -13,4 +13,4 @@ option java_outer_classname = "MessageUser";
 protoc --csharp_out=./ com\evol\protobuf\user.proto
 
 
-protoc user.proto --csharp_out=E:\gitee_public\WeService01\WeService01\proto --proto_path=D:\source\github\spring-coach\coach-common\coach-common-protobuf\src\main\java\com\evol\protobuf
+protoc user.proto --csharp_out=E:\gitee_public\WeService01\WeService01\proto --proto_path=D:\source\github\spring-evol\evol-common\evol-common-protobuf\src\main\java\com\evol\protobuf

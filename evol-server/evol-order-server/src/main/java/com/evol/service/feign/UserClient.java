@@ -8,7 +8,7 @@ package com.evol.service.feign;//package com.evol.service.feign;
 //
 //import java.util.List;
 //
-//@FeignClient("coach-user-server")
+//@FeignClient("evol-user-server")
 //public interface UserClient {
 //
 //    @RequestMapping(method = RequestMethod.GET, value = "/users/list")

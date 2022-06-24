@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @EnableAdminServer
 @EnableEurekaClient
-public class CoachMonitorApplication {
+public class EvolMonitorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CoachMonitorApplication.class, args);
+        SpringApplication.run(EvolMonitorApplication.class, args);
     }
 
 }

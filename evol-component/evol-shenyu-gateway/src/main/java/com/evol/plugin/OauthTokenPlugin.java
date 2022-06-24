@@ -9,11 +9,12 @@ import com.evol.util.RedisClientUtil;
 import com.evol.web.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.dromara.soul.common.dto.RuleData;
-import org.dromara.soul.common.dto.SelectorData;
-import org.dromara.soul.common.enums.PluginEnum;
-import org.dromara.soul.plugin.api.SoulPluginChain;
-import org.dromara.soul.plugin.base.AbstractSoulPlugin;
+
+import org.apache.shenyu.common.dto.RuleData;
+import org.apache.shenyu.common.dto.SelectorData;
+import org.apache.shenyu.common.enums.PluginEnum;
+import org.apache.shenyu.plugin.api.ShenyuPluginChain;
+import org.apache.shenyu.plugin.base.AbstractShenyuPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -28,7 +29,7 @@ import java.util.Objects;
 
 @Component
 @Slf4j
-public class OauthTokenPlugin extends AbstractSoulPlugin {
+public class OauthTokenPlugin extends AbstractShenyuPlugin {
 
     @Autowired
     private RedisClientUtil redisClientUtil;
@@ -49,7 +50,7 @@ public class OauthTokenPlugin extends AbstractSoulPlugin {
     }
 
     @Override
-    protected Mono<Void> doExecute(ServerWebExchange exchange, SoulPluginChain chain, SelectorData selector,
+    protected Mono<Void> doExecute(ServerWebExchange exchange, ShenyuPluginChain chain, SelectorData selector,
                                    RuleData rule){
         ServerHttpRequest request = Objects.requireNonNull(exchange).getRequest();
         ServerHttpResponse response = Objects.requireNonNull(exchange).getResponse();

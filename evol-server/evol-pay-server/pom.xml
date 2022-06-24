@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>evol-pay-server</artifactId>
     <name>evol-pay-server</name>
+    <version>1.0-SNAPSHOT</version>
     <description>Demo project for Spring web</description>
 
     <properties>
@@ -18,10 +18,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.SR6</spring-cloud.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -112,8 +108,8 @@
 
         <dependency>
             <groupId>com.evol</groupId>
-            <artifactId>evol-base-client</artifactId>
-            <version>1.0</version>
+            <artifactId>evol-common-dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -130,7 +126,7 @@
         <dependency>
             <groupId>com.evol</groupId>
             <artifactId>evol-common-core</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 
