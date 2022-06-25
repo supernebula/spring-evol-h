@@ -1,6 +1,6 @@
 package com.evol.service.invoke;
 
-import com.evol.base.client.UserDTO;
+import com.evol.dto.UserDTO;
 import com.evol.domain.dto.MovieDetailDTO;
 import com.evol.service.invoke.fallback.FeignMovieClientFallbackImpl;
 import com.evol.web.ApiResponse;

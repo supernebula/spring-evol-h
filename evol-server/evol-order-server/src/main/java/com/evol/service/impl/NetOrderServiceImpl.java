@@ -1,6 +1,6 @@
 package com.evol.service.impl;
 
-import com.evol.base.client.UserDTO;
+import com.evol.dto.UserDTO;
 import com.evol.contancts.enums.NetOrderStatusEnum;
 import com.evol.contancts.enums.PayModeTypeEnum;
 import com.evol.domain.PageBase;

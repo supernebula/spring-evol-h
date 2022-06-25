@@ -27,11 +27,11 @@ public class CustomLogPlugin extends AbstractShenyuPlugin {
         return "customLog";
     }
 
-    @Override
-    public Boolean skip(final ServerWebExchange exchange){
-
-        return false;
-    }
+//    @Override
+//    public boolean skip(final ServerWebExchange exchange){
+//
+//        return false;
+//    }
 
 
     @Override

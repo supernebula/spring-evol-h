@@ -1,6 +1,6 @@
 package com.evol.service.feign;//package com.evol.service.feign;
 //
-//import com.evol.base.client.UserDTO;
+//import com.evol.dto.UserDTO;
 //import org.springframework.cloud.openfeign.FeignClient;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package com.evol.controller;
 
-import com.evol.base.client.UserDTO;
+import com.evol.dto.UserDTO;
 import com.evol.domain.dto.UserBalanceDTO;
 import com.evol.domain.model.User;
 import com.evol.enums.ApiResponseEnum;
@@ -9,6 +9,7 @@ import com.evol.web.ApiResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;

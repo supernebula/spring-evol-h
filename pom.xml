@@ -46,8 +46,6 @@
         <module>evol-component/evol-register</module>
         <module>evol-component/evol-shenyu-gateway</module>
         <module>evol-server</module>
-        <module>evol-server</module>
-        <module>evol-common/evol-common-dto</module>
     </modules>
 
 

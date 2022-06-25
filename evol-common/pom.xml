@@ -15,6 +15,7 @@
         <module>evol-common-core</module>
         <module>evol-common-data</module>
         <module>evol-common-datasource</module>
+        <module>evol-common-dto</module>
         <module>evol-common-es</module>
         <module>evol-common-protobuf</module>
         <module>evol-common-redis</module>

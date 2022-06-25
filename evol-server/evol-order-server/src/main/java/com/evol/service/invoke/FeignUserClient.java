@@ -1,6 +1,6 @@
 package com.evol.service.invoke;
 
-import com.evol.base.client.UserDTO;
+import com.evol.dto.UserDTO;
 import com.evol.domain.request.UpdateUserBalanceParam;
 import com.evol.service.invoke.fallback.FeignUserClientFallbackImpl;
 import com.evol.web.ApiResponse;

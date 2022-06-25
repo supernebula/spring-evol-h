@@ -10,6 +10,7 @@ import com.evol.web.ApiResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "用户管理")
 @RequestMapping("/web/user")

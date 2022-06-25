@@ -45,7 +45,7 @@ public class OauthTokenPlugin extends AbstractShenyuPlugin {
     }
 
     @Override
-    public Boolean skip(final ServerWebExchange exchange){
+    public boolean skip(final ServerWebExchange exchange){
         return false;
     }
 
@@ -80,7 +80,7 @@ public class OauthTokenPlugin extends AbstractShenyuPlugin {
         return chain.execute(exchange);
     }
 
-    private Mono<Void> unauthResponse(ServerHttpResponse response, ServerWebExchange exchange, SoulPluginChain chain){
+    private Mono<Void> unauthResponse(ServerHttpResponse response, ServerWebExchange exchange, ShenyuPluginChain chain){
 
         ApiResponse apiResponse = ApiResponse.fail(ApiResponseEnum.ACCESS_TOKEN_INVALID, "无效的访问token");
         response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
