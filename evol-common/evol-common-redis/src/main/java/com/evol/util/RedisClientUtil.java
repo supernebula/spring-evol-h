@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,9 @@ public class RedisClientUtil {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisTemplate<String, Object> redisGenTemplate;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -220,64 +224,99 @@ public class RedisClientUtil {
         return  redisTemplate.hasKey(key);
     }
 
-//    /**
-//     * 哈希 添加
-//     *
-//     * @param key
-//     * @param hashKey
-//     * @param value
-//     */
-//    public void hmSet(String key, Object hashKey, Object value) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        hash.put(key, hashKey, value);
-//    }
-//
-//    /**
-//     * 哈希 添加
-//     *
-//     * @param key
-//     * @param hashKey
-//     * @param value
-//     */
-//    public void hmSet(String key, Object hashKey, Object value, Long expireTime) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        hash.put(key, hashKey, value);
-//        stringRedisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
-//    }
-//    /**
-//     * 哈希添加
-//     *
-//     * @param key
-//     * @param hashKey
-//     * @param value
-//     */
-//    public void hmSetHashKey(String key, String hashKey, Object value, Long expireTime) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        hash.put(key, hashKey, value);
-//        stringRedisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
-//    }
-//    /**
-//     * 哈希获取数据
-//     *
-//     * @param key
-//     * @param hashKey
-//     * @return
-//     */
-//    public Object hmGet(String key, Object hashKey) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        return hash.get(key, hashKey);
-//    }
-//
-//    /**
-//     * 哈希获取数据
-//     *
-//     * @param key
-//     * @return
-//     */
-//    public Map<Object, Object> hmGetAll(String key) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        return hash.entries(key);
-//    }
+    /**
+     * 哈希 添加
+     *
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void hmSet(String key, Object hashKey, Object value) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        hash.put(key, hashKey, value);
+    }
+
+    /**
+     * 哈希 添加
+     *
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void hmSet2(String key, Object hashKey, Object value) {
+        HashOperations<String, Object, Object> hash = redisTemplate.opsForHash();
+        hash.put(key, hashKey, value);
+    }
+
+    public void hmSet3(String key, Object hashKey, Object value) {
+        HashOperations<String, Object, Object> hash = redisTemplate.opsForHash();
+        hash.put(key, hashKey, value);
+    }
+
+    /**
+     * 哈希 添加
+     *
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void hmSet(String key, Object hashKey, Object value, Long expireTime) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        hash.put(key, hashKey, value);
+        stringRedisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+    }
+    /**
+     * 哈希添加
+     *
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void hmSetHashKey(String key, String hashKey, Object value, Long expireTime) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        hash.put(key, hashKey, value);
+        stringRedisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+    }
+    /**
+     * 哈希获取数据
+     *
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public Object hmGet(String key, Object hashKey) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        return hash.get(key, hashKey);
+    }
+
+    /**
+     * 哈希获取数据
+     *
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public Object hmGet2(String key, Object hashKey) {
+        HashOperations<String, Object, Object> hash = redisTemplate.opsForHash();
+        return hash.get(key, hashKey);
+    }
+
+
+    public Object hmGet3(String key, Object hashKey) {
+        HashOperations<String, Object, Object> hash = redisGenTemplate.opsForHash();
+        return hash.get(key, hashKey);
+    }
+
+    /**
+     * 哈希获取数据
+     *
+     * @param key
+     * @return
+     */
+    public Map<Object, Object> hmGetAll(String key) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        return hash.entries(key);
+    }
 //
 //    /**
 //     * 列表添加
@@ -360,15 +399,15 @@ public class RedisClientUtil {
 //        return zset.rangeByScore(key, scoure, scoure1);
 //    }
 //
-//    /**
-//     * 哈希 删除
-//     * @param key
-//     * @param hashKey
-//     */
-//    public void hmDel(String key, Object hashKey) {
-//        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
-//        hash.delete(key, hashKey);
-//    }
+    /**
+     * 哈希 删除
+     * @param key
+     * @param hashKey
+     */
+    public void hmDel(String key, Object hashKey) {
+        HashOperations<String, Object, Object> hash = stringRedisTemplate.opsForHash();
+        hash.delete(key, hashKey);
+    }
 //
 //    /**
 //     * @param lockKey
